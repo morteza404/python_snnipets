@@ -1,0 +1,5 @@
+---
+Default:
+  ftp_host: "127.0.0.1"
+  ftp_user: "ftpuser"
+  ftp_password: "pass%125"
