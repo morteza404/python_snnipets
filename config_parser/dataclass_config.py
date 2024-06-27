@@ -28,11 +28,16 @@ class Config:
 
 class DirectDelete:
     def __init__(self, config):
-        self.config = config
+        self.account = config.account
+        self.schema = config.schema
+        self.retries = config.retries
+        self.delay = config.delay
+        self.semaphore_rate = config.semaphore_rate
+        self.host_address = config.host_address
 
     def show(self):
         print(
-            f"{self.config.account=}, {self.config.retries=}, {self.config.delay=}, {self.config.semaphore_rate=}, {self.config.host_address=}"
+            f"{self.account=}, {self.schema=}, {self.retries=}, {self.delay=}, {self.semaphore_rate=}, {self.host_address=}", 
         )
 
 
