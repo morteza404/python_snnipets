@@ -12,18 +12,18 @@ class Config:
     host_address: str
 
     @classmethod
-    def read_config(cls, config_path, section):
+    def from_ini_file(cls, config_path, section):
         config = configparser.ConfigParser()
         config.read(config_path)
 
-        account = config.get(section, "account")
-        schema = config.get(section, "schema")
-        retries = config.get(section, "retries")
-        delay = config.getint(section, "delay")
-        semaphore_rate = config.getint(section, "semaphore_rate")
-        host_address = config.get(section, "host_address")
-
-        return cls(account, schema, retries, delay, semaphore_rate, host_address)
+        return cls(
+            account=config.get(section, "account"),
+            schema=config.get(section, "schema"),
+            retries=config.get(section, "retries"),
+            delay=config.getint(section, "delay"),
+            semaphore_rate=config.getint(section, "semaphore_rate"),
+            host_address=config.get(section, "host_address"),
+        )
 
 
 class DirectDelete:
@@ -36,7 +36,7 @@ class DirectDelete:
         )
 
 
-config = Config.read_config("tools.conf", "DirectDelete")
+config = Config.from_ini_file("tools.conf", "DirectDelete")
 print(config.__dict__)
 direct_delete = DirectDelete(config)
 direct_delete.show()
