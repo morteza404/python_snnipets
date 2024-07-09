@@ -36,6 +36,7 @@ print_area(square)  # Output: The area is: 25
 
 # after
 
+
 class Shape(Protocol):
     def get_area(self):
         pass
